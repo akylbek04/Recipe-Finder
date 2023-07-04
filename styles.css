@@ -70,3 +70,7 @@ button {
 .pagination{
     margin: 20px 5px;
 }
+
+.active{
+    background-color: #3e8e41;
+}

@@ -9,6 +9,7 @@ let recipesData = [];
 
 
 searchForm.addEventListener("submit", (e) => {
+    
     e.preventDefault();
     fetchRecipes();
 })
@@ -17,9 +18,9 @@ const renderRecipes = (pageNum = 1) => {
     container.innerHTML = '';
     const endIndex = pageNum * 10;
     const startIndex = endIndex - 10;
-
+    
     const pieceOfData = recipesData.slice(startIndex, endIndex);
-
+    
     pieceOfData.forEach(el => {
         console.log(el);
         const div = document.createElement("div");
@@ -49,7 +50,11 @@ const fetchRecipes = async () => {
 }
 
 btns.forEach(btn => {
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", (e) => {
+        let currBtn = document.querySelector(".active");
+        currBtn.classList.remove('active');
+        currBtn = e.target;
+        currBtn.classList.add('active');
         renderRecipes(btn.innerText);
     });
 });
